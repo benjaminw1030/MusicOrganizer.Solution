@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Search Artist list</h1>
+<p>Enter the artist's name:</p>
+<div class="form-group">
+  <form action="/artists/search_results" method="post">
+    <label for="artistName">Artist name</label>
+    <input id="artistName" name="artistName" type="text">
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<button><a href="/">Home</a></button>
+<button><a href="/artists">Artists</a></button>

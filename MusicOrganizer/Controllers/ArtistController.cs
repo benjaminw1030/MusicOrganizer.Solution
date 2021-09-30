@@ -20,6 +20,12 @@ namespace MusicOrganizer.Controllers
       return View();
     }
 
+    [HttpGet("/artists/search_by_artist")]
+    public ActionResult SearchByArtist()
+    {
+      return View();
+    }
+
     [HttpPost("/artists")]
     public ActionResult Create(string artistName)
     {
@@ -49,6 +55,23 @@ namespace MusicOrganizer.Controllers
       model.Add("records", artistRecords);
       model.Add("artist", foundArtist);
       return View("Show", model);
+    }
+
+    [HttpPost("/artists/search_results")]
+    public ActionResult SearchResults(string artistName)
+    {
+      List<Artist> searchResults = new List<Artist>();
+      List<Artist> allArtists = Artist.GetAll();
+      string searchName = artistName.ToLower();
+      foreach (Artist artist in allArtists)
+      {
+        string name = artist.Name.ToLower();
+        if (name.Contains(searchName))
+        {
+          searchResults.Add(artist);
+        }
+      }
+      return View(searchResults);
     }
   }
 }
