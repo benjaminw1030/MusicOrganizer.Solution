@@ -16,6 +16,16 @@ namespace MusicOrganizer.Models
       Id = _instances.Count;
     }
 
+    public static List<Record> GetAll()
+    {
+      return _instances;
+    }
+
+    public static Record Find(int searchId)
+    {
+      return _instances[searchId - 1];
+    }
+
     public static void ClearAll()
     {
       _instances.Clear();
