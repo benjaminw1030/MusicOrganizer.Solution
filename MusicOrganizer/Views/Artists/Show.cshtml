@@ -1,0 +1,24 @@
+@using MusicOrganizer.Models;
+
+@{
+  Layout = "_Layout";
+}
+
+<h3>Records for this artist:</h3>
+
+@if (@Model["records"].Count == 0)
+{
+  <p>There are no records logged yet.</p>
+}
+
+
+<ol>
+@foreach (Record record in @Model["records"])
+{
+  <li><a href='/artists/@Model["artist"].Id/records/@record.Id'>@record.Name</a></li>
+}
+</ol>
+
+<a href='/artists/@Model["artist"].Id/records/new'><button>Add a record</button></a>
+<a href='/artists'><button>Return to Artist List</button></a>
+<a href='/'><button>Home</button></a>
